@@ -1,0 +1,2207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2eb">
+  <title>Jatin Rohilla / ByteJatin — CSE Developer Portfolio</title>
+  <meta name="description"
+    content="Jatin Rohilla: Computer Science and Engineering undergraduate at GGSIPU. C programming, data structures, algorithms, coursework and GitHub learning.">
+  <meta property="og:title" content="Jatin Rohilla / ByteJatin — CSE Developer Portfolio">
+  <meta property="og:description"
+    content="Jatin Rohilla: Computer Science and Engineering undergraduate at GGSIPU. C programming, data structures, algorithms, coursework and GitHub learning.">
+  <meta property="og:type" content="website">
+  <style>
+    :root {
+      --bg: #f4f2eb;
+      --paper: #fffef9;
+      --ink: #25271f;
+      --muted: #65675c;
+      --line: #d8d9cc;
+      --accent: #b23e1e;
+      --soft: #ebe7dc;
+      --dark: #252b22;
+      --white: #fcfbf5;
+      --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+      color-scheme: light
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #171b17;
+      --paper: #222822;
+      --ink: #f2f2e8;
+      --muted: #bbc0b2;
+      --line: #41483c;
+      --accent: #ff9a78;
+      --soft: #2c342b;
+      --dark: #111610;
+      --white: #fcfbf5;
+      color-scheme: dark
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.55
+    }
+
+    button,
+    input,
+    select {
+      font: inherit
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent
+    }
+
+    button {
+      color: inherit;
+      cursor: pointer
+    }
+
+    a {
+      color: inherit;
+      text-underline-offset: 4px
+    }
+
+    button:disabled {
+      cursor: default;
+      opacity: .4
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 5px
+    }
+
+    button {
+      border: 0
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    figure {
+      margin: 0
+    }
+
+    img {
+      display: block;
+      max-width: 100%
+    }
+
+    button svg {
+      width: 18px;
+      height: 18px
+    }
+
+    ::selection {
+      background: #edb399;
+      color: #24271f
+    }
+
+    .wrap {
+      width: min(1240px, calc(100% - 96px));
+      margin: auto
+    }
+
+    .skip {
+      position: fixed;
+      top: -100px;
+      left: 20px;
+      background: var(--paper);
+      padding: 12px;
+      z-index: 100
+    }
+
+    .skip:focus {
+      top: 12px
+    }
+
+    .mono,
+    .eyebrow,
+    .index {
+      font: 11px/1.5 var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted)
+    }
+
+    .eyebrow:before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      display: inline-block
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      gap: 36px
+    }
+
+    .brand {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-right: auto
+    }
+
+    .brandmark {
+      display: grid;
+      place-items: center;
+      width: 39px;
+      height: 39px;
+      border: 1px solid var(--ink);
+      font-size: 17px;
+      letter-spacing: -2px;
+      padding-right: 2px
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font: 10px/1.7 var(--mono);
+      letter-spacing: .04em
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 13px
+    }
+
+    .nav-links a:hover {
+      color: var(--accent)
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px
+    }
+
+    .theme-button {
+      height: 34px;
+      width: 34px;
+      display: grid;
+      place-items: center;
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 50%
+    }
+
+    .nav-resume {
+      font-size: 12px;
+      background: transparent;
+      border-bottom: 1px solid var(--ink);
+      padding: 4px 0
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.04fr 1fr;
+      gap: 70px;
+      padding: 76px 0 56px;
+      align-items: center
+    }
+
+    .hero h1 {
+      font-size: clamp(74px, 7.7vw, 112px);
+      line-height: .91;
+      letter-spacing: -.075em;
+      font-weight: 800;
+      margin: 30px 0
+    }
+
+    .hero h1 span {
+      color: var(--accent)
+    }
+
+    .hero-role {
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.5;
+      letter-spacing: -.03em;
+      margin-bottom: 14px
+    }
+
+    .hero-copy {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 41ch;
+      line-height: 1.8
+    }
+
+    .button-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 28px
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      padding: 13px 19px;
+      border: 1px solid var(--ink);
+      text-decoration: none;
+      background: var(--ink);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 700
+    }
+
+    .button:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--paper)
+    }
+
+    .text-button {
+      background: transparent;
+      padding: 6px 0;
+      font-size: 13px;
+      border-bottom: 1px solid var(--line);
+      text-decoration: none
+    }
+
+    .text-button:hover {
+      color: var(--accent)
+    }
+
+    .hero-visual {
+      position: relative;
+      margin-top: 24px
+    }
+
+    .visual-overline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 0 12px;
+      color: var(--muted)
+    }
+
+    .hero-image-button {
+      background: var(--soft);
+      padding: 0;
+      width: 100%;
+      overflow: hidden;
+      display: block;
+      position: relative
+    }
+
+    .hero-image-button img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1.13;
+      object-fit: cover;
+      transition: transform .5s ease
+    }
+
+    .hero-image-button:hover img {
+      transform: scale(1.025)
+    }
+
+    .hero-image-button .open-image {
+      bottom: 16px;
+      right: 16px
+    }
+
+    .visual-caption {
+      padding: 14px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--line);
+      font-size: 12px
+    }
+
+    .visual-caption span:last-child {
+      color: var(--muted)
+    }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 17px
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: #598348;
+      border-radius: 50%;
+      display: inline-block
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.3fr;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 24px 0
+    }
+
+    .fact {
+      padding: 0 28px;
+      border-right: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 17px
+    }
+
+    .fact:first-child {
+      padding-left: 0
+    }
+
+    .fact:last-child {
+      border: 0
+    }
+
+    .fact b {
+      font-size: 33px;
+      letter-spacing: -.06em;
+      font-weight: 500;
+      white-space: nowrap
+    }
+
+    .fact span {
+      color: var(--muted);
+      font-size: 12px;
+      max-width: 15ch;
+      line-height: 1.5
+    }
+
+    .section {
+      padding: 90px 0;
+      scroll-margin-top: 0
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+      margin: 19px 0 36px
+    }
+
+    .section-head h2,
+    .about-heading {
+      font-size: clamp(35px, 4vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -.055em;
+      font-weight: 500
+    }
+
+    .section-head>p {
+      max-width: 36ch;
+      font-size: 14px;
+      color: var(--muted)
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 42px 30px
+    }
+
+    .project-image {
+      position: relative;
+      width: 100%;
+      padding: 0;
+      background: var(--soft);
+      overflow: hidden;
+      display: block
+    }
+
+    .project-image img {
+      width: 100%;
+      aspect-ratio: 1.64;
+      height: auto;
+      object-fit: cover;
+      transition: transform .4s ease
+    }
+
+    .project-image:hover img {
+      transform: scale(1.035)
+    }
+
+    .image-top {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      pointer-events: none
+    }
+
+    .image-top span {
+      font: 10px/1 var(--mono);
+      padding: 8px 9px;
+      background: #fcfbf5;
+      color: #25271f
+    }
+
+    .open-image {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      background: #fcfbf5;
+      color: #25271f;
+      border-radius: 50%;
+      font-size: 22px
+    }
+
+    .project-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 18px
+    }
+
+    .index {
+      color: var(--muted);
+      font-size: 10px
+    }
+
+    .project h3 {
+      font-size: 25px;
+      letter-spacing: -.04em;
+      font-weight: 500;
+      margin-top: 5px
+    }
+
+    .project-arrow {
+      font-size: 25px;
+      color: var(--muted)
+    }
+
+    .project-sub {
+      font-size: 14px;
+      margin-top: 8px
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 53ch;
+      line-height: 1.65;
+      margin-top: 4px
+    }
+
+    .archive {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-top: 46px
+    }
+
+    .archive summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 25px 0
+    }
+
+    .archive summary::-webkit-details-marker {
+      display: none
+    }
+
+    .archive summary strong {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -.025em
+    }
+
+    .archive summary p {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 4px
+    }
+
+    .archive summary .plus {
+      font-size: 24px;
+      line-height: 1
+    }
+
+    .archive[open] summary .plus {
+      transform: rotate(45deg)
+    }
+
+    .archive-controls {
+      display: flex;
+      gap: 12px;
+      margin: 4px 0 18px
+    }
+
+    .archive-controls input,
+    .archive-controls select {
+      min-width: 0;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 0;
+      font-size: 13px
+    }
+
+    .archive-controls input {
+      flex: 1
+    }
+
+    .archive-controls select {
+      max-width: 210px
+    }
+
+    .archive-status {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 19px
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px 16px
+    }
+
+    .archive-item button {
+      padding: 0;
+      background: transparent;
+      text-align: left;
+      width: 100%;
+      display: block
+    }
+
+    .archive-item img {
+      aspect-ratio: 1.6;
+      object-fit: cover;
+      width: 100%;
+      height: auto;
+      background: var(--soft)
+    }
+
+    .archive-item span {
+      display: block;
+      font-size: 12px;
+      margin-top: 8px;
+      line-height: 1.5
+    }
+
+    .archive-item button:hover span {
+      color: var(--accent)
+    }
+
+    .archive-bottom {
+      text-align: center;
+      padding: 30px 0
+    }
+
+    .no-results {
+      padding: 30px 0;
+      color: var(--muted)
+    }
+
+    [hidden] {
+      display: none !important
+    }
+
+    .about-band {
+      background: var(--dark);
+      color: var(--white)
+    }
+
+    .about-band .eyebrow {
+      color: #b5bdad
+    }
+
+    .about-band .eyebrow:before {
+      background: #e58b64
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 90px;
+      padding-top: 64px;
+      padding-bottom: 64px
+    }
+
+    .about-heading {
+      margin-top: 25px;
+      line-height: 1.18
+    }
+
+    .about-text>p {
+      font-size: 17px;
+      color: #d2d7c9;
+      line-height: 1.8;
+      max-width: 52ch
+    }
+
+    .about-text>p+p {
+      margin-top: 16px
+    }
+
+    .about-bottom {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-top: 1px solid #4a5141;
+      margin-top: 26px;
+      padding-top: 20px;
+      font-size: 12px
+    }
+
+    .about-bottom span {
+      color: #b5bdad
+    }
+
+    .about-bottom a {
+      margin-left: auto
+    }
+
+    .cse-layout {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 70px;
+      margin-top: 38px
+    }
+
+    .education {
+      border-left: 2px solid var(--accent);
+      padding-left: 25px
+    }
+
+    .education .index {
+      color: var(--accent)
+    }
+
+    .education h3 {
+      font-size: 24px;
+      line-height: 1.3;
+      letter-spacing: -.04em;
+      margin: 12px 0
+    }
+
+    .education p {
+      font-size: 14px;
+      color: var(--muted)
+    }
+
+    .education a {
+      display: inline-block;
+      font-size: 13px;
+      margin-top: 25px
+    }
+
+    .skills {
+      border-top: 1px solid var(--line)
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .skill-row h3 {
+      font-size: 13px;
+      font-weight: 500
+    }
+
+    .skill-row p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8
+    }
+
+    .next-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 18px
+    }
+
+    .learning-note {
+      margin-top: 37px;
+      border: 1px solid var(--line);
+      padding: 22px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 26px
+    }
+
+    .learning-note p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 5px
+    }
+
+    .learning-note h3 {
+      font-size: 15px;
+      font-weight: 500
+    }
+
+    .learning-note a {
+      font-size: 13px;
+      white-space: nowrap
+    }
+
+    .contact {
+      border-top: 1px solid var(--line);
+      padding: 64px 0 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 65px
+    }
+
+    .contact h2 {
+      font-size: clamp(35px, 4.2vw, 57px);
+      line-height: 1.1;
+      letter-spacing: -.055em;
+      font-weight: 500;
+      margin-top: 21px
+    }
+
+    .contact-intro {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 42ch;
+      margin-top: 20px
+    }
+
+    .contact-links {
+      padding-top: 12px
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+      width: 100%;
+      border-bottom: 1px solid var(--line);
+      font-size: 16px;
+      text-decoration: none;
+      background: transparent;
+      text-align: left
+    }
+
+    .contact-link small {
+      display: block;
+      color: var(--muted);
+      font: 10px/1.8 var(--mono);
+      letter-spacing: .06em;
+      text-transform: uppercase
+    }
+
+    .contact-link:hover {
+      color: var(--accent)
+    }
+
+    .copy-status {
+      min-height: 1.5em;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 11px;
+      color: var(--muted)
+    }
+
+    footer a {
+      text-decoration: none
+    }
+
+    .dialog {
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--ink);
+      padding: 0;
+      max-width: min(1100px, calc(100vw - 32px));
+      width: 1100px;
+      max-height: calc(100dvh - 32px)
+    }
+
+    .dialog::backdrop {
+      background: #0b100de8
+    }
+
+    .dialog-top {
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .dialog-top h2 {
+      font-size: 14px;
+      font-weight: 500
+    }
+
+    .close {
+      background: transparent;
+      font-size: 13px;
+      padding: 5px 0
+    }
+
+    .lightbox-image {
+      width: 100%;
+      height: min(67dvh, 680px);
+      object-fit: contain;
+      background: #111610
+    }
+
+    .lightbox-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 22px
+    }
+
+    .lightbox-caption {
+      font-size: 14px
+    }
+
+    .lightbox-count {
+      font: 11px var(--mono);
+      color: var(--muted);
+      margin-top: 6px
+    }
+
+    .gallery-arrows {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0
+    }
+
+    .gallery-arrows button {
+      width: 39px;
+      height: 39px;
+      border: 1px solid var(--line);
+      background: transparent;
+      font-size: 19px
+    }
+
+    .resume-dialog {
+      width: 790px
+    }
+
+    .resume-tools {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap
+    }
+
+    .resume-tools a,
+    .resume-tools button {
+      background: transparent;
+      color: inherit;
+      font-size: 12px;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      padding: 0
+    }
+
+    .resume-document {
+      background: #fff;
+      color: #111;
+      padding: 42px 48px;
+      font: 13px/1.5 Arial, Helvetica, sans-serif
+    }
+
+    .resume-document h2 {
+      font-size: 28px;
+      letter-spacing: -.02em;
+      margin-bottom: 7px
+    }
+
+    .resume-header {
+      padding-bottom: 15px
+    }
+
+    .resume-links {
+      font-size: 11px;
+      line-height: 1.6;
+      margin-top: 10px
+    }
+
+    .resume-document section {
+      margin-top: 15px
+    }
+
+    .resume-document h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      border-bottom: 1px solid #999;
+      margin-bottom: 7px;
+      padding-bottom: 3px;
+      letter-spacing: .03em
+    }
+
+    .resume-document section p+p {
+      margin-top: 5px
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0
+    }
+
+    @media(min-width:1500px) {
+      .hero {
+        gap: 100px
+      }
+    }
+
+    @media(max-width:1000px) {
+      .wrap {
+        width: calc(100% - 56px)
+      }
+
+      .nav {
+        gap: 22px
+      }
+
+      .nav-links {
+        gap: 20px
+      }
+
+      .hero {
+        gap: 35px
+      }
+
+      .hero h1 {
+        font-size: 86px
+      }
+
+      .about-inner {
+        gap: 50px
+      }
+
+      .cse-layout {
+        gap: 40px
+      }
+
+      .skill-row {
+        grid-template-columns: 120px 1fr
+      }
+
+      .archive-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+    }
+
+    @media(max-width:720px) {
+      html {
+        scroll-padding-top: 115px
+      }
+
+      .wrap {
+        width: calc(100% - 36px)
+      }
+
+      .nav {
+        min-height: 72px;
+        flex-wrap: wrap;
+        column-gap: 15px;
+        row-gap: 0;
+        padding-top: 14px
+      }
+
+      .brand {
+        font-size: 12px
+      }
+
+      .brandmark {
+        width: 33px;
+        height: 33px;
+        font-size: 16px
+      }
+
+      .nav-actions {
+        margin-left: auto
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        padding: 15px 0 12px;
+        gap: 10px
+      }
+
+      .nav-links a {
+        font-size: 12px
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 44px 0 32px;
+        gap: 24px
+      }
+
+      .hero h1 {
+        font-size: 88px;
+        margin: 24px 0
+      }
+
+      .hero-role {
+        font-size: 21px
+      }
+
+      .hero-copy {
+        max-width: 46ch
+      }
+
+      .hero-visual {
+        margin-top: 12px
+      }
+
+      .hero-image-button img {
+        aspect-ratio: 1.5
+      }
+
+      .facts {
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 19px 0
+      }
+
+      .fact {
+        padding: 0 14px;
+        display: block
+      }
+
+      .fact b {
+        font-size: 25px;
+        display: block
+      }
+
+      .fact span {
+        font-size: 10px;
+        display: block;
+        margin-top: 4px;
+        max-width: 17ch
+      }
+
+      .fact:last-child {
+        padding-right: 0
+      }
+
+      .section {
+        padding: 57px 0
+      }
+
+      .section-head {
+        display: block;
+        margin-bottom: 28px
+      }
+
+      .section-head>p {
+        margin-top: 17px;
+        max-width: 43ch
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+        gap: 34px
+      }
+
+      .project h3 {
+        font-size: 25px
+      }
+
+      .project-image img {
+        aspect-ratio: 1.55
+      }
+
+      .project-desc {
+        max-width: 100%
+      }
+
+      .archive-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 12px
+      }
+
+      .archive-controls {
+        flex-wrap: wrap
+      }
+
+      .archive-controls input {
+        flex-basis: 100%
+      }
+
+      .archive-controls select {
+        width: 100%;
+        max-width: none
+      }
+
+      .archive summary strong {
+        font-size: 17px
+      }
+
+      .archive summary p {
+        font-size: 11px
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-top: 45px;
+        padding-bottom: 45px
+      }
+
+      .about-heading {
+        font-size: 38px;
+        margin-top: 18px
+      }
+
+      .about-text>p {
+        font-size: 15px
+      }
+
+      .about-bottom {
+        flex-wrap: wrap;
+        gap: 10px
+      }
+
+      .about-bottom a {
+        margin-left: 0;
+        width: 100%
+      }
+
+      .cse-layout {
+        grid-template-columns: 1fr;
+        gap: 30px
+      }
+
+      .skill-row {
+        grid-template-columns: 100px 1fr;
+        gap: 20px
+      }
+
+      .learning-note {
+        display: block;
+        padding: 20px
+      }
+
+      .learning-note a {
+        display: inline-block;
+        margin-top: 15px
+      }
+
+      .contact {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 47px 0
+      }
+
+      .contact h2 {
+        font-size: 43px
+      }
+
+      .contact-links {
+        padding: 0
+      }
+
+      footer {
+        font-size: 10px;
+        flex-wrap: wrap
+      }
+
+      .dialog {
+        max-width: calc(100vw - 20px);
+        max-height: calc(100dvh - 20px)
+      }
+
+      .dialog-top {
+        padding: 15px
+      }
+
+      .lightbox-bottom {
+        padding: 16px;
+        align-items: flex-end
+      }
+
+      .lightbox-caption {
+        font-size: 12px
+      }
+
+      .lightbox-image {
+        height: 55dvh
+      }
+
+      .resume-dialog .dialog-top {
+        flex-wrap: wrap
+      }
+
+      .resume-document {
+        padding: 27px 23px
+      }
+
+      .resume-tools {
+        gap: 15px
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+        animation: none !important
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 15mm
+    }
+
+    @media print {
+
+      html,
+      body {
+        background: white !important;
+        color: #111 !important;
+        font-size: 11pt
+      }
+
+      .site-header,
+      .site-footer,
+      .skip,
+      .site-content,
+      .lightbox,
+      .dialog-top {
+        display: none !important
+      }
+
+      .resume-dialog {
+        display: block !important;
+        position: static !important;
+        width: auto !important;
+        max-width: none !important;
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        margin: 0 !important;
+        border: 0 !important;
+        box-shadow: none !important
+      }
+
+      .resume-document {
+        padding: 0;
+        font-size: 10pt;
+        line-height: 1.4
+      }
+
+      .resume-document h2 {
+        font-size: 23pt
+      }
+
+      .resume-document h3 {
+        font-size: 10pt
+      }
+
+      .resume-document section {
+        break-inside: avoid;
+        margin-top: 11px
+      }
+
+      .resume-document a {
+        color: #111;
+        text-decoration: none
+      }
+
+      .resume-links {
+        font-size: 9pt
+      }
+
+      .resume-dialog::backdrop {
+        display: none
+      }
+    }
+
+    /* A personal Roblox identity alongside the About introduction. */
+    .roblox-identity {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-top: 28px;
+      width: fit-content;
+      max-width: 100%;
+      text-decoration: none;
+      color: var(--white)
+    }
+
+    .roblox-avatar-frame {
+      display: block;
+      flex: 0 0 124px;
+      width: 124px;
+      height: 124px;
+      background: #e4e8de;
+      border: 1px solid #c0c8b8;
+      overflow: hidden
+    }
+
+    .roblox-avatar {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform .25s ease
+    }
+
+    .roblox-identity-copy {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      gap: 5px
+    }
+
+    .roblox-identity-label {
+      font: 10px/1.5 var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #b5bdad
+    }
+
+    .roblox-identity-copy strong {
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: -.035em
+    }
+
+    .roblox-profile-cta {
+      font-size: 12px;
+      color: #d2d7c9;
+      margin-top: 7px;
+      text-decoration: underline;
+      text-underline-offset: 4px
+    }
+
+    .roblox-identity:hover .roblox-avatar {
+      transform: translateY(-3px)
+    }
+
+    .roblox-identity:hover .roblox-profile-cta {
+      color: #e9a07d
+    }
+
+    @media(max-width:720px) {
+      .roblox-identity {
+        margin-top: 24px;
+        gap: 18px
+      }
+
+      .roblox-avatar-frame {
+        flex-basis: 108px;
+        width: 108px;
+        height: 108px
+      }
+
+      .roblox-identity-copy strong {
+        font-size: 20px
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      .roblox-avatar {
+        transition: none
+      }
+
+      .roblox-identity:hover .roblox-avatar {
+        transform: none
+      }
+    }
+
+    /* Each portfolio has its own page, navigation, content, and resume. */
+    html {
+      scroll-padding-top: 135px
+    }
+
+    body[data-portfolio="cse"] {
+      --accent: #3054b0;
+      --dark: #1e2b3d
+    }
+
+    :root[data-theme="dark"] body[data-portfolio="cse"] {
+      --accent: #9ebcff;
+      --dark: #121e2c
+    }
+
+    .site-header .nav {
+      min-height: 78px;
+      gap: 28px
+    }
+
+    .portfolio-switch {
+      display: flex;
+      border: 1px solid var(--line);
+      padding: 4px;
+      gap: 4px;
+      background: var(--soft)
+    }
+
+    .portfolio-switch a {
+      padding: 9px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted)
+    }
+
+    .portfolio-switch a[aria-current="page"] {
+      background: var(--ink);
+      color: var(--bg)
+    }
+
+    .portfolio-switch a:not([aria-current]):hover {
+      background: var(--paper);
+      color: var(--ink)
+    }
+
+    .mode-symbol {
+      font: 12px var(--mono);
+      letter-spacing: -.06em
+    }
+
+    .section-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 40px;
+      border-top: 1px solid var(--line);
+      padding-top: 6px;
+      padding-bottom: 10px
+    }
+
+    .section-nav-label {
+      font: 10px var(--mono);
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--accent)
+    }
+
+    .section-nav-links {
+      display: flex;
+      gap: 27px;
+      align-items: center
+    }
+
+    .section-nav-links a {
+      font-size: 12px;
+      text-decoration: none
+    }
+
+    .section-nav-links a:hover {
+      color: var(--accent)
+    }
+
+    .site-header .nav-actions {
+      margin-left: auto
+    }
+
+    .site-header .brand {
+      margin-right: 0
+    }
+
+    .site-header .portfolio-switch {
+      margin-left: auto
+    }
+
+    .code-study {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      margin-top: 24px;
+      min-width: 0
+    }
+
+    .code-study-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line);
+      font: 11px var(--mono);
+      color: var(--muted)
+    }
+
+    .code-study-top span:first-child {
+      color: var(--accent)
+    }
+
+    .code-study pre {
+      font: 12px/1.9 var(--mono);
+      padding: 23px 22px;
+      margin: 0;
+      overflow: auto;
+      color: var(--ink);
+      tab-size: 2
+    }
+
+    .code-study .code-type {
+      color: var(--accent)
+    }
+
+    .code-study .code-comment {
+      color: var(--muted)
+    }
+
+    .study-result {
+      border-top: 1px solid var(--line);
+      margin: 0 22px;
+      padding: 16px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      font: 12px/1.8 var(--mono)
+    }
+
+    .study-result small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase
+    }
+
+    .code-study figcaption {
+      border-top: 1px solid var(--line);
+      padding: 15px 22px;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px
+    }
+
+    .learning-card {
+      border-top: 1px solid var(--line);
+      padding: 25px 0
+    }
+
+    .learning-card h3 {
+      font-size: 25px;
+      letter-spacing: -.04em;
+      font-weight: 500;
+      margin: 16px 0 13px
+    }
+
+    .learning-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8
+    }
+
+    .learning-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: space-between
+    }
+
+    .learning-status {
+      font: 10px var(--mono);
+      border: 1px solid var(--line);
+      padding: 4px 7px;
+      color: var(--muted)
+    }
+
+    .cse-about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 75px;
+      align-items: start
+    }
+
+    .cse-about-copy p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.85
+    }
+
+    .cse-about-copy p+p {
+      margin-top: 17px
+    }
+
+    .cse-about-copy .education {
+      margin-top: 30px
+    }
+
+    .cse-about-copy .education p {
+      font-size: 14px
+    }
+
+    .toolkit-layout {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 70px
+    }
+
+    .toolkit-note {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 34ch
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 26px;
+      border-top: 1px solid var(--line);
+      margin-top: 42px;
+      padding-top: 25px
+    }
+
+    .workflow h3 {
+      font-size: 17px;
+      font-weight: 500;
+      margin: 9px 0
+    }
+
+    .workflow p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.75
+    }
+
+    .mode-crosslink {
+      color: var(--muted);
+      font-size: 11px
+    }
+
+    @media(max-width:1000px) {
+      .site-header .nav {
+        gap: 20px
+      }
+
+      .portfolio-switch a {
+        padding: 9px 11px
+      }
+
+      .cse-about {
+        gap: 40px
+      }
+
+      .toolkit-layout {
+        gap: 35px
+      }
+
+      .learning-grid {
+        gap: 20px
+      }
+
+      .code-study pre {
+        font-size: 11px;
+        padding: 20px 16px
+      }
+    }
+
+    @media(max-width:720px) {
+      html {
+        scroll-padding-top: 155px
+      }
+
+      .site-header .nav {
+        padding-top: 13px;
+        min-height: 0;
+        gap: 12px;
+        flex-wrap: wrap
+      }
+
+      .site-header .nav-actions {
+        margin-left: auto
+      }
+
+      .site-header .portfolio-switch {
+        order: 3;
+        width: 100%;
+        margin: 0 0 12px;
+        justify-content: center
+      }
+
+      .portfolio-switch a {
+        flex: 1;
+        justify-content: center;
+        padding: 10px 7px;
+        font-size: 12px
+      }
+
+      .section-nav {
+        min-height: 36px;
+        padding-top: 0;
+        padding-bottom: 10px
+      }
+
+      .section-nav-label {
+        display: none
+      }
+
+      .section-nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 12px
+      }
+
+      .section-nav-links a {
+        font-size: 11px
+      }
+
+      .learning-grid,
+      .cse-about,
+      .toolkit-layout {
+        grid-template-columns: 1fr;
+        gap: 20px
+      }
+
+      .learning-card {
+        padding: 20px 0
+      }
+
+      .learning-card h3 {
+        margin: 12px 0
+      }
+
+      .code-study {
+        margin-top: 0
+      }
+
+      .code-study pre {
+        font-size: 11px
+      }
+
+      .cse-about-copy p {
+        font-size: 15px
+      }
+
+      .workflow {
+        grid-template-columns: 1fr 1fr;
+        gap: 22px
+      }
+
+      .toolkit-note {
+        max-width: none
+      }
+
+      .cse-about-copy .education {
+        margin-top: 25px
+      }
+    }
+
+    /* Personal portrait beside the name on the CSE page. */
+    .cse-name-row {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin: 30px 0;
+      max-width: 100%
+    }
+
+    .hero .cse-name-row h1 {
+      font-size: clamp(70px, 7.1vw, 100px);
+      margin: 0;
+      line-height: .94
+    }
+
+    .cse-portrait-frame {
+      width: clamp(132px, 13vw, 184px);
+      aspect-ratio: 1;
+      flex-shrink: 0;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--paper);
+      box-shadow: 0 8px 24px rgba(23, 36, 56, .07)
+    }
+
+    .cse-portrait-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      object-position: 50% 50%;
+      border-radius: 50%
+    }
+
+    @media(max-width:1000px) {
+      .cse-name-row {
+        gap: 18px
+      }
+
+      .cse-portrait-frame {
+        width: clamp(124px, 15vw, 150px)
+      }
+    }
+
+    @media(max-width:720px) {
+      .cse-name-row {
+        margin: 24px 0;
+        gap: 16px
+      }
+
+      .hero .cse-name-row h1 {
+        font-size: clamp(60px, 12vw, 88px)
+      }
+
+      .cse-portrait-frame {
+        width: clamp(108px, 31vw, 170px);
+        padding: 5px
+      }
+    }
+
+    @media(max-width:359px) {
+      .cse-name-row {
+        gap: 12px
+      }
+
+      .hero .cse-name-row h1 {
+        font-size: 56px
+      }
+
+      .cse-portrait-frame {
+        width: 104px;
+        padding: 4px
+      }
+    }
+  </style>
+</head>
+
+<body data-portfolio="cse">
+  <a href="#main" class="skip">Skip to content</a>
+  <header class="site-header">
+    <div class="nav wrap"><a class="brand" href="#main" aria-label="Jatin Rohilla, back to top"><span class="brandmark"
+          aria-hidden="true">JR</span><span>Jatin Rohilla<small>BYTEJATIN / CSE DEVELOPER</small></span></a>
+      <nav class="portfolio-switch" aria-label="Choose portfolio"><a href="./" aria-current="page"><span
+            class="mode-symbol" aria-hidden="true">&lt;/&gt;</span>CSE Developer</a><a href="./roblox.html"><span
+            class="mode-symbol" aria-hidden="true">◇</span>Roblox Developer</a></nav>
+      <div class="nav-actions"><button class="theme-button" id="theme" aria-label="Use dark theme"
+          aria-pressed="false"><svg viewbox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
+            stroke-width="1.6">
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="M12 4a8 8 0 0 0 0 16Z" fill="currentColor" stroke="none"></path>
+          </svg></button><button class="nav-resume" data-resume>Résumé ↗</button></div>
+    </div>
+    <nav class="section-nav wrap" aria-label="CSE developer portfolio sections"><span class="section-nav-label">CSE
+        developer portfolio</span>
+      <div class="section-nav-links"><a href="#cse-learning">Learning</a><a href="#cse-about">Education</a><a
+          href="#cse-skills">Skills</a><a href="#cse-contact">Contact</a></div>
+    </nav>
+  </header>
+  <main id="main" class="site-content">
+    <div class="wrap">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow">CSE developer · ByteJatin</p>
+          <div class="cse-name-row">
+            <h1 id="hero-title">Jatin<br>Rohilla<span>.</span></h1>
+            <figure class="cse-portrait-frame"><img src="./assets/jatin-profile-v1.png"
+                alt="Jatin Rohilla, CSE student, wearing glasses and a black T-shirt" width="1254" height="1254"
+                loading="eager" decoding="async" fetchpriority="high"></figure>
+          </div>
+          <p class="hero-role">Learning computer science.<br>Building from the fundamentals.</p>
+          <p class="hero-copy">I’m a B.Tech CSE student at GGSIPU, working through C programming, data structures and
+            algorithms—and documenting the learning along the way.</p>
+          <div class="button-row"><a class="button" href="#cse-learning">Explore my learning <span
+                aria-hidden="true">↘</span></a><button class="text-button" data-resume>View CSE résumé ↗</button></div>
+          <p class="hero-note"><span class="status-dot" aria-hidden="true"></span>Currently studying · B.Tech CSE at
+            GGSIPU</p>
+        </div>
+        <figure class="code-study">
+          <div class="code-study-top"><span>C / STUDY NOTE 01</span><span>Arrays &amp; loops</span></div>
+          <pre><code><span class="code-comment">// A small step in learning algorithms.</span>
+<span class="code-type">void</span> bubble_sort(<span class="code-type">int</span> a[], <span class="code-type">int</span> n) {
+  <span class="code-type">for</span> (int i = 0; i &lt; n - 1; i++) {
+    <span class="code-type">for</span> (int j = 0; j &lt; n - i - 1; j++) {
+      <span class="code-type">if</span> (a[j] &gt; a[j + 1]) {
+        int temp = a[j];
+        a[j] = a[j + 1];
+        a[j + 1] = temp;
+      }
+    }
+  }
+}</code></pre>
+          <div class="study-result">
+            <div><small>Example input</small>9, 3, 7, 1</div>
+            <div><small>Sorted output</small>1, 3, 7, 9</div>
+          </div>
+          <figcaption>A coursework example: compare, swap, repeat.</figcaption>
+        </figure>
+      </section>
+      <div class="facts" aria-label="Current focus">
+        <div class="fact"><b>B.Tech</b><span>Computer Science &amp; Engineering</span></div>
+        <div class="fact"><b>C + DSA</b><span>my current learning focus</span></div>
+        <div class="fact"><b>GitHub</b><span>documenting work as ByteJatin</span></div>
+      </div>
+      <section id="cse-learning" class="section" aria-labelledby="learning-title">
+        <p class="eyebrow">01 / Learning &amp; coursework</p>
+        <div class="section-head">
+          <h2 id="learning-title">A foundation,<br>one concept at a time.</h2>
+          <p>What I’m studying now, with room for the projects that grow out of it.</p>
+        </div>
+        <div class="learning-grid">
+          <article class="learning-card">
+            <div class="learning-top"><span class="index">01 / Programming</span><span class="learning-status">CURRENT
+                FOCUS</span></div>
+            <h3>C programming</h3>
+            <p>Working through variables, control flow, functions, arrays and pointers. Connecting the syntax to clear,
+              step-by-step problem solving.</p>
+          </article>
+          <article class="learning-card">
+            <div class="learning-top"><span class="index">02 / Problem solving</span><span
+                class="learning-status">LEARNING</span></div>
+            <h3>Data structures<br>&amp; algorithms</h3>
+            <p>Developing an understanding of how data is organized and how algorithms work, starting with fundamental
+              operations and sorting.</p>
+          </article>
+          <article class="learning-card">
+            <div class="learning-top"><span class="index">03 / Foundations</span><span
+                class="learning-status">COURSEWORK</span></div>
+            <h3>Engineering<br>fundamentals</h3>
+            <p>Building the academic and technical foundation behind software, while documenting coursework and setup
+              notes.</p>
+          </article>
+        </div>
+        <aside class="learning-note">
+          <div>
+            <h3>Follow the work as it develops.</h3>
+            <p>My coursework and technical learning live on GitHub under ByteJatin.</p>
+          </div><a href="https://github.com/ByteJatin" target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a>
+        </aside>
+      </section>
+      <section id="cse-about" class="section" aria-labelledby="cse-about-title"
+        style="border-top:1px solid var(--line)">
+        <div class="cse-about">
+          <div>
+            <p class="eyebrow">02 / About &amp; education</p>
+            <div class="section-head">
+              <h2 id="cse-about-title">Curiosity first.<br>Understanding next.</h2>
+            </div>
+          </div>
+          <div class="cse-about-copy">
+            <p>I’m Jatin Rohilla, a Computer Science &amp; Engineering undergraduate at GGSIPU. This portfolio is a
+              record of my technical learning, coursework and growing development skills.</p>
+            <p>My focus is on understanding the fundamentals: writing C programs, working through algorithms and
+              learning how to explain a solution clearly.</p>
+            <article class="education"><span class="index">Currently studying</span>
+              <h3>B.Tech in Computer Science<br>&amp; Engineering</h3>
+              <p>Guru Gobind Singh Indraprastha University<br>(GGSIPU)</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="cse-skills" class="section" aria-labelledby="cse-skills-title"
+        style="border-top:1px solid var(--line)">
+        <p class="eyebrow">03 / Skills &amp; tools</p>
+        <div class="section-head">
+          <h2 id="cse-skills-title">The tools I’m learning.<br>The habits I’m building.</h2>
+        </div>
+        <div class="toolkit-layout">
+          <p class="toolkit-note">A growing skill set, grounded in coursework and regular practice. I’m still early in
+            the journey and keeping the learning visible.</p>
+          <div>
+            <div class="skills">
+              <div class="skill-row">
+                <h3>Programming</h3>
+                <p>C · Program structure · Control flow · Functions · Arrays · Pointers</p>
+              </div>
+              <div class="skill-row">
+                <h3>Core learning</h3>
+                <p>Data structures · Algorithms · Sorting · Problem solving</p>
+              </div>
+              <div class="skill-row">
+                <h3>Development tools</h3>
+                <p>Git · GitHub · Technical documentation</p>
+              </div>
+              <div class="skill-row">
+                <h3>Organization</h3>
+                <p>Notion · Jira · Trello</p>
+              </div>
+            </div>
+            <p class="next-note">Next on the learning roadmap: AI, machine learning and data models.</p>
+          </div>
+        </div>
+      </section>
+      <section id="cse-contact" class="contact" aria-labelledby="cse-contact-title">
+        <div>
+          <p class="eyebrow">04 / Connect</p>
+          <h2 id="cse-contact-title">Let’s learn.<br>Let’s build.</h2>
+          <p class="contact-intro">Open to learning together and collaborating on technical projects. Find my coursework
+            and coding journey on GitHub.</p>
+          <div class="button-row"><button class="text-button" data-resume>Read my CSE résumé ↗</button></div>
+        </div>
+        <div class="contact-links"><a class="contact-link" href="https://github.com/ByteJatin" target="_blank"
+            rel="noopener noreferrer"><span><small>Code &amp; coursework</small>GitHub / ByteJatin</span><span
+              aria-hidden="true">↗</span></a><a class="contact-link" href="#cse-learning"><span><small>Currently
+                exploring</small>Learning &amp; coursework</span><span aria-hidden="true">↑</span></a></div>
+      </section>
+    </div>
+  </main>
+  <footer class="wrap site-footer"><span>© 2026 Jatin Rohilla · ByteJatin</span><a class="mode-crosslink"
+      href="./roblox.html">Switch to Roblox Developer ↗</a><a href="#main">Back to top ↑</a></footer>
+  <dialog id="resume" class="dialog resume-dialog" aria-labelledby="resume-label">
+    <div class="dialog-top">
+      <h2 id="resume-label">CSE Developer / résumé</h2>
+      <div class="resume-tools"><button id="print-resume">Print / Save PDF</button><a id="download-resume"
+          download="Jatin-Rohilla-CSE-Resume.txt"
+          href="data:text/plain;charset=utf-8;base64,SkFUSU4gUk9ISUxMQQpDb21wdXRlciBTY2llbmNlIGFuZCBFbmdpbmVlcmluZyBVbmRlcmdyYWR1YXRlIHwgQyBQcm9ncmFtbWluZwpHaXRIdWI6IGh0dHBzOi8vZ2l0aHViLmNvbS9CeXRlSmF0aW4KUG9ydGZvbGlvOiBodHRwczovL2phdGluLXJvaGlsbGEtcG9ydGZvbGlvLmdpdmluZ2Jpc29uMzIuY2hhdGdwdC5zaXRlLwoKUFJPRkVTU0lPTkFMIFNVTU1BUlkKQ29tcHV0ZXIgU2NpZW5jZSBhbmQgRW5naW5lZXJpbmcgdW5kZXJncmFkdWF0ZSBhdCBHR1NJUFUsIGRldmVsb3BpbmcgYSBmb3VuZGF0aW9uIGluIEMgcHJvZ3JhbW1pbmcsIGRhdGEgc3RydWN0dXJlcywgYWxnb3JpdGhtcyBhbmQgZW5naW5lZXJpbmcgZnVuZGFtZW50YWxzLiBEb2N1bWVudHMgY291cnNld29yayBhbmQgdGVjaG5pY2FsIGxlYXJuaW5nIG9uIEdpdEh1YiBhcyBCeXRlSmF0aW4uCgpFRFVDQVRJT04KQmFjaGVsb3Igb2YgVGVjaG5vbG9neSAoQi5UZWNoKSwgQ29tcHV0ZXIgU2NpZW5jZSBhbmQgRW5naW5lZXJpbmcKR3VydSBHb2JpbmQgU2luZ2ggSW5kcmFwcmFzdGhhIFVuaXZlcnNpdHkgKEdHU0lQVSkgfCBDdXJyZW50bHkgc3R1ZHlpbmcKCkNVUlJFTlQgTEVBUk5JTkcgQU5EIENPVVJTRVdPUksKQyBwcm9ncmFtbWluZzogcHJvZ3JhbSBzdHJ1Y3R1cmUsIHZhcmlhYmxlcywgY29udHJvbCBmbG93LCBmdW5jdGlvbnMsIGFycmF5cyBhbmQgcG9pbnRlcnMuCkRhdGEgc3RydWN0dXJlcyBhbmQgYWxnb3JpdGhtczogZnVuZGFtZW50YWwgb3BlcmF0aW9ucywgc29ydGluZyBhbmQgcHJvYmxlbSBzb2x2aW5nLgpFbmdpbmVlcmluZyBmdW5kYW1lbnRhbHMsIHRlY2huaWNhbCBub3RlcyBhbmQgZG9jdW1lbnRhdGlvbi4KClRPT0xTCkdpdCwgR2l0SHViLCBOb3Rpb24sIEppcmEgYW5kIFRyZWxsby4KCkxFQVJOSU5HIFJPQURNQVAKQUksIG1hY2hpbmUgbGVhcm5pbmcgYW5kIGRhdGEgbW9kZWxzLgoK">Download
+          TXT</a><button data-close="resume">Close ×</button></div>
+    </div>
+    <article class="resume-document">
+      <header class="resume-header">
+        <h2>Jatin Rohilla</h2>
+        <p>Computer Science and Engineering Undergraduate | C Programming</p>
+        <p class="resume-links">GitHub: <a
+            href="https://github.com/ByteJatin">https://github.com/ByteJatin</a><br>Portfolio: <a
+            href="https://jatin-rohilla-portfolio.givingbison32.chatgpt.site/">https://jatin-rohilla-portfolio.givingbison32.chatgpt.site/</a><br>
+        </p>
+      </header>
+      <section>
+        <h3>Professional Summary</h3>
+        <p>Computer Science and Engineering undergraduate at GGSIPU, developing a foundation in C programming, data
+          structures, algorithms and engineering fundamentals. Documents coursework and technical learning on GitHub as
+          ByteJatin.</p>
+      </section>
+      <section>
+        <h3>Education</h3>
+        <p>Bachelor of Technology (B.Tech), Computer Science and Engineering</p>
+        <p>Guru Gobind Singh Indraprastha University (GGSIPU) | Currently studying</p>
+      </section>
+      <section>
+        <h3>Current Learning and Coursework</h3>
+        <p>C programming: program structure, variables, control flow, functions, arrays and pointers.</p>
+        <p>Data structures and algorithms: fundamental operations, sorting and problem solving.</p>
+        <p>Engineering fundamentals, technical notes and documentation.</p>
+      </section>
+      <section>
+        <h3>Tools</h3>
+        <p>Git, GitHub, Notion, Jira and Trello.</p>
+      </section>
+      <section>
+        <h3>Learning Roadmap</h3>
+        <p>AI, machine learning and data models.</p>
+      </section>
+    </article>
+  </dialog>
+  <script
+    type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Jatin Rohilla", "alternateName": "ByteJatin", "description": "Jatin Rohilla: Computer Science and Engineering undergraduate at GGSIPU. C programming, data structures, algorithms, coursework and GitHub learning.", "sameAs": ["https://github.com/ByteJatin"]}</script>
+  <script>
+    (() => {
+      'use strict';
+      const root = document.documentElement, theme = document.getElementById('theme');
+      function setTheme(dark) { root.dataset.theme = dark ? 'dark' : 'light'; theme.setAttribute('aria-pressed', String(dark)); theme.setAttribute('aria-label', dark ? 'Use light theme' : 'Use dark theme'); }
+      try { setTheme(localStorage.getItem('jr-theme') === 'dark'); } catch (e) { setTheme(false); }
+      theme.addEventListener('click', () => { const dark = root.dataset.theme !== 'dark'; setTheme(dark); try { localStorage.setItem('jr-theme', dark ? 'dark' : 'light'); } catch (e) { } });
+      const resume = document.getElementById('resume'); let lastFocus = null;
+      function openResume() { lastFocus = document.activeElement; resume.showModal(); document.body.style.overflow = 'hidden'; }
+      document.querySelectorAll('[data-resume]').forEach(button => button.addEventListener('click', openResume));
+      document.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => document.getElementById(button.dataset.close).close()));
+      resume.addEventListener('click', event => { if (event.target === resume) { const box = resume.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) resume.close(); } });
+      resume.addEventListener('close', () => { document.body.style.overflow = ''; lastFocus?.focus(); });
+      document.getElementById('print-resume').addEventListener('click', () => window.print());
+      const oldRobloxHashes = new Set(['#roblox', '#rbx', '#work', '#about', '#contact', '#archive', '#r-work', '#r-contact']);
+      function routeLegacy() { if (oldRobloxHashes.has(location.hash)) { let hash = location.hash; if (hash === '#roblox' || hash === '#rbx') hash = ''; if (hash === '#r-work') hash = '#work'; if (hash === '#r-contact') hash = '#contact'; location.replace('./roblox.html' + hash); return true; } return false; }
+      if (!routeLegacy() && location.hash === '#resume') openResume();
+      window.addEventListener('hashchange', routeLegacy);
+    })();
+  </script>
+</body>
+
+</html>
