@@ -6,5 +6,6 @@
 4. Open `index.html` itself in your browser to preview. Do not open the project folder as a `file:///` URL; browsers cannot load a folder as a page. No build or package installation is needed.
 
 Keep the assets folder next to both HTML files. The top switch links the two portfolios.
+Both portfolio pages use Futura PT when it is installed on your system, with sans-serif fallbacks otherwise. Futura PT is not bundled with this project.
 
 Optional local preview if Python is installed: run `python -m http.server 8000` from this folder, then open http://localhost:8000.
