@@ -451,6 +451,100 @@
             color: var(--muted)
         }
 
+        /* Team-led games sit before the individual build collections. */
+        .led-projects {
+            border-bottom: 1px solid var(--line)
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 30px
+        }
+
+        .game-card {
+            display: flex;
+            flex-direction: column;
+            padding: 32px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-top: 3px solid var(--accent)
+        }
+
+        .game-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            color: var(--muted)
+        }
+
+        .game-card-top .index {
+            color: var(--accent)
+        }
+
+        .game-card h3 {
+            font-size: clamp(28px, 3vw, 38px);
+            font-weight: 500;
+            letter-spacing: -.045em;
+            line-height: 1.15;
+            margin: 30px 0 14px
+        }
+
+        .game-role {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent)
+        }
+
+        .game-description {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.8;
+            margin: 15px 0 26px;
+            max-width: 48ch
+        }
+
+        .game-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            border-top: 1px solid var(--line);
+            padding-top: 18px;
+            margin-top: auto;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none
+        }
+
+        .game-link:hover {
+            color: var(--accent)
+        }
+
+        .game-link>span[aria-hidden] {
+            font-size: 22px;
+            font-weight: 400
+        }
+
+        .team-note {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            padding-top: 26px
+        }
+
+        .team-note h3 {
+            font-size: 15px;
+            font-weight: 500
+        }
+
+        .team-note p {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.8
+        }
+
         .projects {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1189,6 +1283,20 @@
                 gap: 34px
             }
 
+            .game-grid {
+                grid-template-columns: 1fr;
+                gap: 20px
+            }
+
+            .game-card {
+                padding: 24px
+            }
+
+            .team-note {
+                grid-template-columns: 1fr;
+                gap: 10px
+            }
+
             .project h3 {
                 font-size: 25px
             }
@@ -1578,12 +1686,16 @@
         .section-nav-links {
             display: flex;
             gap: 27px;
-            align-items: center
+            align-items: center;
+            min-width: 0;
+            overflow-x: auto
         }
 
         .section-nav-links a {
             font-size: 12px;
-            text-decoration: none
+            text-decoration: none;
+            flex-shrink: 0;
+            white-space: nowrap
         }
 
         .section-nav-links a:hover {
@@ -2251,7 +2363,7 @@
         </div>
         <nav class="section-nav wrap" aria-label="Roblox developer portfolio sections"><span
                 class="section-nav-label">Roblox developer portfolio</span>
-            <div class="section-nav-links"><a href="#work">Selected work</a><a href="#about">About</a><a
+            <div class="section-nav-links"><a href="#projects">Projects</a><a href="#work">My builds</a><a href="#about">About</a><a
                     href="#toolkit">Toolkit</a><a href="#commissions" aria-label="Commission terms of service">TOS</a><a
                     href="#contact">Contact</a></div>
         </nav>
@@ -2265,7 +2377,7 @@
                     <p class="hero-role">Roblox builder.<br>Game producer &amp; project coordinator.</p>
                     <p class="hero-copy">I’m Jatin. I build worlds in Roblox Studio, shape terrain and lighting, and
                         coordinate the work that turns a game idea into a playable experience.</p>
-                    <div class="button-row"><a class="button" href="#work">Explore my work <span
+                    <div class="button-row"><a class="button" href="#projects">Explore my work <span
                                 aria-hidden="true">↘</span></a><button class="text-button" data-resume>View résumé
                             ↗</button><a class="text-button" href="https://www.roblox.com/users/5495416365/profile"
                             target="_blank" rel="noopener noreferrer">Roblox profile ↗</a></div>
@@ -2295,8 +2407,45 @@
                 <div class="fact"><b>75m+</b><span>Total Contributions visits across Roblox Platform.</span></div>
                 <div class="fact"><b>1.5+</b><span>Project Manager and Game Producer working across Roblox development. I plan sprints, coordinate dev teams, and run playtests to keep projects shipping.</span></div>
             </div>
+            <section id="projects" class="section led-projects" aria-labelledby="projects-title">
+                <p class="eyebrow">01 / Projects &amp; leadership</p>
+                <div class="section-head">
+                    <h2 id="projects-title">Games I’ve led.</h2>
+                    <p>My own Roblox projects, developed with a team. On both, I worked as owner and lead project
+                        manager.</p>
+                </div>
+                <div class="game-grid">
+                    <article class="game-card" aria-labelledby="life-on-land-title">
+                        <div class="game-card-top"><span class="index">01 / Team project</span><span class="mono">Roblox</span></div>
+                        <h3 id="life-on-land-title">Life on Land</h3>
+                        <p class="game-role">Owner &amp; Lead Project Manager</p>
+                        <p class="game-description">A Roblox project I own and worked on with a development team,
+                            leading the project and coordinating our work together.</p>
+                        <a class="game-link" href="https://www.roblox.com/games/107404216832650/Life-on-Land"
+                            target="_blank" rel="noopener noreferrer"
+                            aria-label="View Life on Land on Roblox (opens in a new tab)">View on Roblox <span
+                                aria-hidden="true">↗</span></a>
+                    </article>
+                    <article class="game-card" aria-labelledby="blades-knockout-title">
+                        <div class="game-card-top"><span class="index">02 / Team project</span><span class="mono">Roblox</span></div>
+                        <h3 id="blades-knockout-title">Blades Knockout</h3>
+                        <p class="game-role">Owner &amp; Lead Project Manager</p>
+                        <p class="game-description">Another of my own Roblox projects, built through team collaboration
+                            with me leading project management and development coordination.</p>
+                        <a class="game-link" href="https://www.roblox.com/games/71404096793115/Blades-Knockout"
+                            target="_blank" rel="noopener noreferrer"
+                            aria-label="View Blades Knockout on Roblox (opens in a new tab)">View on Roblox <span
+                                aria-hidden="true">↗</span></a>
+                    </article>
+                </div>
+                <div class="team-note">
+                    <h3>Behind the projects</h3>
+                    <p>My production work brings together sprint planning, task coordination, team communication
+                        and playtests—helping the team move from an idea to the next iteration.</p>
+                </div>
+            </section>
             <section id="work" class="section" aria-labelledby="work-title">
-                <p class="eyebrow">01 / Selected work</p>
+                <p class="eyebrow">02 / My builds</p>
                 <div class="section-head">
                     <h2 id="work-title">Worlds worth<br>looking around.</h2>
                     <p>Environments, game spaces and studies from my Roblox work. Open a collection to explore the
@@ -2861,7 +3010,7 @@
         <section id="about" class="about-band" aria-labelledby="about-title">
             <div class="wrap about-inner">
                 <div>
-                    <p class="eyebrow">02 / A little about me</p>
+                    <p class="eyebrow">03 / A little about me</p>
                     <h2 id="about-title" class="about-heading">The builder<br>behind the worlds.</h2><a
                         class="roblox-identity" href="https://www.roblox.com/users/5495416365/profile" target="_blank"
                         rel="noopener noreferrer" aria-label="View NeoStudiox on Roblox (opens in a new tab)"><span
@@ -2886,7 +3035,7 @@
         </section>
         <div class="wrap">
             <section id="toolkit" class="section" aria-labelledby="toolkit-title">
-                <p class="eyebrow">03 / Toolkit &amp; process</p>
+                <p class="eyebrow">04 / Toolkit &amp; process</p>
                 <div class="section-head">
                     <h2 id="toolkit-title">From the first block<br>to the next playtest.</h2>
                 </div>
@@ -2934,7 +3083,7 @@
                 </div>
             </section>
             <section id="commissions" class="section commissions" aria-labelledby="commissions-title">
-                <p class="eyebrow">04 / Commissions &amp; TOS</p>
+                <p class="eyebrow">05 / Commissions &amp; TOS</p>
                 <div class="section-head">
                     <h2 id="commissions-title">Let’s build.<br>On clear terms.</h2>
                     <p>Commission guidelines for working with me as a Roblox builder. Please read these before
@@ -3043,7 +3192,7 @@
             </section>
             <section class="contact" id="contact" aria-labelledby="contact-title">
                 <div>
-                    <p class="eyebrow">05 / Get in touch</p>
+                    <p class="eyebrow">06 / Get in touch</p>
                     <h2 id="contact-title">Got a world<br>in mind?</h2>
                     <p class="contact-intro">Open to short-term commissions and long-term Roblox collaborations,
                         depending on scope and availability. Read my commission terms, then get in touch with your
@@ -3095,7 +3244,7 @@
                 <p class="resume-links">Roblox: <a
                         href="https://www.roblox.com/users/5495416365/profile">https://www.roblox.com/users/5495416365/profile</a><br>Portfolio:
                     <a
-                        href="https://jatin-rohilla-portfolio.givingbison32.chatgpt.site/roblox.html">https://jatin-rohilla-portfolio.givingbison32.chatgpt.site/roblox.html</a><br>Discord:
+                        href="https://bytejatin.vercel.app/">https://bytejatin.vercel.app/</a><br>Discord:
                     neostudiox<br></p>
             </header>
             <section>
@@ -3164,3 +3313,4 @@
 </body>
 
 </html>
+ 

@@ -1145,17 +1145,18 @@
       }
 
       .facts {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         padding: 19px 0
       }
 
       .fact {
         padding: 0 14px;
+        min-width: 0;
         display: block
       }
 
       .fact b {
-        font-size: 25px;
+        font-size: clamp(20px, 5.6vw, 25px);
         display: block
       }
 
@@ -1602,69 +1603,6 @@
       margin-left: auto
     }
 
-    .code-study {
-      border: 1px solid var(--line);
-      background: var(--paper);
-      margin-top: 24px;
-      min-width: 0
-    }
-
-    .code-study-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 18px 22px;
-      border-bottom: 1px solid var(--line);
-      font: 11px var(--mono);
-      color: var(--muted)
-    }
-
-    .code-study-top span:first-child {
-      color: var(--accent)
-    }
-
-    .code-study pre {
-      font: 12px/1.9 var(--mono);
-      padding: 23px 22px;
-      margin: 0;
-      overflow: auto;
-      color: var(--ink);
-      tab-size: 2
-    }
-
-    .code-study .code-type {
-      color: var(--accent)
-    }
-
-    .code-study .code-comment {
-      color: var(--muted)
-    }
-
-    .study-result {
-      border-top: 1px solid var(--line);
-      margin: 0 22px;
-      padding: 16px 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      font: 12px/1.8 var(--mono)
-    }
-
-    .study-result small {
-      display: block;
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: .06em;
-      text-transform: uppercase
-    }
-
-    .code-study figcaption {
-      border-top: 1px solid var(--line);
-      padding: 15px 22px;
-      font-size: 12px;
-      color: var(--muted)
-    }
-
     .learning-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1788,10 +1726,6 @@
         gap: 20px
       }
 
-      .code-study pre {
-        font-size: 11px;
-        padding: 20px 16px
-      }
     }
 
     @media(max-width:720px) {
@@ -1859,14 +1793,6 @@
         margin: 12px 0
       }
 
-      .code-study {
-        margin-top: 0
-      }
-
-      .code-study pre {
-        font-size: 11px
-      }
-
       .cse-about-copy p {
         font-size: 15px
       }
@@ -1885,80 +1811,36 @@
       }
     }
 
-    /* Personal portrait beside the name on the CSE page. */
-    .cse-name-row {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      margin: 30px 0;
-      max-width: 100%
-    }
-
-    .hero .cse-name-row h1 {
-      font-size: clamp(70px, 7.1vw, 100px);
-      margin: 0;
-      line-height: .94
-    }
-
-    .cse-portrait-frame {
-      width: clamp(132px, 13vw, 184px);
-      aspect-ratio: 1;
-      flex-shrink: 0;
-      padding: 6px;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      background: var(--paper);
-      box-shadow: 0 8px 24px rgba(23, 36, 56, .07)
-    }
-
-    .cse-portrait-frame img {
-      display: block;
+    /* A single, full portrait replaces the CSE code sample. */
+    .cse-hero-portrait {
       width: 100%;
-      height: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      object-position: 50% 50%;
-      border-radius: 50%
+      max-width: 440px;
+      min-width: 0;
+      justify-self: end
     }
 
-    @media(max-width:1000px) {
-      .cse-name-row {
-        gap: 18px
-      }
+    .cse-hero-image {
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
+      background: var(--soft)
+    }
 
-      .cse-portrait-frame {
-        width: clamp(124px, 15vw, 150px)
-      }
+    .cse-hero-portrait .visual-caption {
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px 18px
     }
 
     @media(max-width:720px) {
-      .cse-name-row {
-        margin: 24px 0;
-        gap: 16px
+      .cse-hero-portrait {
+        max-width: 420px;
+        justify-self: center;
+        margin-top: 12px
       }
 
-      .hero .cse-name-row h1 {
-        font-size: clamp(60px, 12vw, 88px)
-      }
-
-      .cse-portrait-frame {
-        width: clamp(108px, 31vw, 170px);
-        padding: 5px
-      }
-    }
-
-    @media(max-width:359px) {
-      .cse-name-row {
-        gap: 12px
-      }
-
-      .hero .cse-name-row h1 {
-        font-size: 56px
-      }
-
-      .cse-portrait-frame {
-        width: 104px;
-        padding: 4px
+      .hero h1 {
+        font-size: clamp(64px, 12vw, 88px)
       }
     }
   </style>
@@ -1990,39 +1872,22 @@
       <section class="hero" aria-labelledby="hero-title">
         <div>
           <p class="eyebrow">CSE developer · ByteJatin</p>
-          <div class="cse-name-row">
-            <h1 id="hero-title">Jatin<br>Rohilla<span>.</span></h1>
-            <figure class="cse-portrait-frame"><img src="./assets/jatin-profile-v1.png"
-                alt="Jatin Rohilla, CSE student, wearing glasses and a black T-shirt" width="1254" height="1254"
-                loading="eager" decoding="async" fetchpriority="high"></figure>
-          </div>
+          <h1 id="hero-title">Jatin<br>Rohilla<span>.</span></h1>
           <p class="hero-role">Learning computer science.<br>Building from the fundamentals.</p>
           <p class="hero-copy">I’m a B.Tech CSE student at GGSIPU, working through C programming, data structures and
             algorithms—and documenting the learning along the way.</p>
           <div class="button-row"><a class="button" href="#cse-learning">Explore my learning <span
-                aria-hidden="true">↘</span></a><button class="text-button" data-resume>View CSE résumé ↗</button></div>
+                aria-hidden="true">↘</span></a><button class="text-button" data-resume>View CSE résumé ↗</button><a
+              class="text-button" href="https://www.linkedin.com/in/jatin-rohilla-2916bb34b/" target="_blank"
+              rel="noopener noreferrer" aria-label="Connect with Jatin on LinkedIn (opens in a new tab)">LinkedIn ↗</a></div>
           <p class="hero-note"><span class="status-dot" aria-hidden="true"></span>Currently studying · B.Tech CSE at
             GGSIPU</p>
         </div>
-        <figure class="code-study">
-          <div class="code-study-top"><span>C / STUDY NOTE 01</span><span>Arrays &amp; loops</span></div>
-          <pre><code><span class="code-comment">// A small step in learning algorithms.</span>
-<span class="code-type">void</span> bubble_sort(<span class="code-type">int</span> a[], <span class="code-type">int</span> n) {
-  <span class="code-type">for</span> (int i = 0; i &lt; n - 1; i++) {
-    <span class="code-type">for</span> (int j = 0; j &lt; n - i - 1; j++) {
-      <span class="code-type">if</span> (a[j] &gt; a[j + 1]) {
-        int temp = a[j];
-        a[j] = a[j + 1];
-        a[j + 1] = temp;
-      }
-    }
-  }
-}</code></pre>
-          <div class="study-result">
-            <div><small>Example input</small>9, 3, 7, 1</div>
-            <div><small>Sorted output</small>1, 3, 7, 9</div>
-          </div>
-          <figcaption>A coursework example: compare, swap, repeat.</figcaption>
+        <figure class="cse-hero-portrait">
+          <img class="cse-hero-image" src="./assets/jatin-portrait-casual-v2.png"
+            alt="Portrait of Jatin Rohilla wearing black glasses and a plain black T-shirt against a soft neutral background"
+            width="1122" height="1402" loading="eager" decoding="async" fetchpriority="high">
+          <figcaption class="visual-caption"><span>Jatin Rohilla / ByteJatin</span><span>B.Tech CSE · GGSIPU</span></figcaption>
         </figure>
       </section>
       <div class="facts" aria-label="Current focus">
@@ -2123,12 +1988,15 @@
         <div>
           <p class="eyebrow">04 / Connect</p>
           <h2 id="cse-contact-title">Let’s learn.<br>Let’s build.</h2>
-          <p class="contact-intro">Open to learning together and collaborating on technical projects. Find my coursework
-            and coding journey on GitHub.</p>
+          <p class="contact-intro">Open to learning together and collaborating on technical projects. Follow my coding
+            journey on GitHub or connect with me on LinkedIn.</p>
           <div class="button-row"><button class="text-button" data-resume>Read my CSE résumé ↗</button></div>
         </div>
         <div class="contact-links"><a class="contact-link" href="https://github.com/ByteJatin" target="_blank"
             rel="noopener noreferrer"><span><small>Code &amp; coursework</small>GitHub / ByteJatin</span><span
+              aria-hidden="true">↗</span></a><a class="contact-link"
+            href="https://www.linkedin.com/in/jatin-rohilla-2916bb34b/" target="_blank" rel="noopener noreferrer"
+            aria-label="View Jatin Rohilla on LinkedIn (opens in a new tab)"><span><small>Professional profile</small>LinkedIn / Jatin Rohilla</span><span
               aria-hidden="true">↗</span></a><a class="contact-link" href="#cse-learning"><span><small>Currently
                 exploring</small>Learning &amp; coursework</span><span aria-hidden="true">↑</span></a></div>
       </section>
@@ -2141,7 +2009,7 @@
       <h2 id="resume-label">CSE Developer / résumé</h2>
       <div class="resume-tools"><button id="print-resume">Print / Save PDF</button><a id="download-resume"
           download="Jatin-Rohilla-CSE-Resume.txt"
-          href="data:text/plain;charset=utf-8;base64,SkFUSU4gUk9ISUxMQQpDb21wdXRlciBTY2llbmNlIGFuZCBFbmdpbmVlcmluZyBVbmRlcmdyYWR1YXRlIHwgQyBQcm9ncmFtbWluZwpHaXRIdWI6IGh0dHBzOi8vZ2l0aHViLmNvbS9CeXRlSmF0aW4KUG9ydGZvbGlvOiBodHRwczovL2phdGluLXJvaGlsbGEtcG9ydGZvbGlvLmdpdmluZ2Jpc29uMzIuY2hhdGdwdC5zaXRlLwoKUFJPRkVTU0lPTkFMIFNVTU1BUlkKQ29tcHV0ZXIgU2NpZW5jZSBhbmQgRW5naW5lZXJpbmcgdW5kZXJncmFkdWF0ZSBhdCBHR1NJUFUsIGRldmVsb3BpbmcgYSBmb3VuZGF0aW9uIGluIEMgcHJvZ3JhbW1pbmcsIGRhdGEgc3RydWN0dXJlcywgYWxnb3JpdGhtcyBhbmQgZW5naW5lZXJpbmcgZnVuZGFtZW50YWxzLiBEb2N1bWVudHMgY291cnNld29yayBhbmQgdGVjaG5pY2FsIGxlYXJuaW5nIG9uIEdpdEh1YiBhcyBCeXRlSmF0aW4uCgpFRFVDQVRJT04KQmFjaGVsb3Igb2YgVGVjaG5vbG9neSAoQi5UZWNoKSwgQ29tcHV0ZXIgU2NpZW5jZSBhbmQgRW5naW5lZXJpbmcKR3VydSBHb2JpbmQgU2luZ2ggSW5kcmFwcmFzdGhhIFVuaXZlcnNpdHkgKEdHU0lQVSkgfCBDdXJyZW50bHkgc3R1ZHlpbmcKCkNVUlJFTlQgTEVBUk5JTkcgQU5EIENPVVJTRVdPUksKQyBwcm9ncmFtbWluZzogcHJvZ3JhbSBzdHJ1Y3R1cmUsIHZhcmlhYmxlcywgY29udHJvbCBmbG93LCBmdW5jdGlvbnMsIGFycmF5cyBhbmQgcG9pbnRlcnMuCkRhdGEgc3RydWN0dXJlcyBhbmQgYWxnb3JpdGhtczogZnVuZGFtZW50YWwgb3BlcmF0aW9ucywgc29ydGluZyBhbmQgcHJvYmxlbSBzb2x2aW5nLgpFbmdpbmVlcmluZyBmdW5kYW1lbnRhbHMsIHRlY2huaWNhbCBub3RlcyBhbmQgZG9jdW1lbnRhdGlvbi4KClRPT0xTCkdpdCwgR2l0SHViLCBOb3Rpb24sIEppcmEgYW5kIFRyZWxsby4KCkxFQVJOSU5HIFJPQURNQVAKQUksIG1hY2hpbmUgbGVhcm5pbmcgYW5kIGRhdGEgbW9kZWxzLgoK">Download
+          href="data:text/plain;charset=utf-8;base64,SkFUSU4gUk9ISUxMQQpDb21wdXRlciBTY2llbmNlIGFuZCBFbmdpbmVlcmluZyBVbmRlcmdyYWR1YXRlIHwgQyBQcm9ncmFtbWluZwpHaXRIdWI6IGh0dHBzOi8vZ2l0aHViLmNvbS9CeXRlSmF0aW4KTGlua2VkSW46IGh0dHBzOi8vd3d3LmxpbmtlZGluLmNvbS9pbi9qYXRpbi1yb2hpbGxhLTI5MTZiYjM0Yi8KUG9ydGZvbGlvOiBodHRwczovL2J5dGVqYXRpbi52ZXJjZWwuYXBwLwoKUFJPRkVTU0lPTkFMIFNVTU1BUlkKQ29tcHV0ZXIgU2NpZW5jZSBhbmQgRW5naW5lZXJpbmcgdW5kZXJncmFkdWF0ZSBhdCBHR1NJUFUsIGRldmVsb3BpbmcgYSBmb3VuZGF0aW9uIGluIEMgcHJvZ3JhbW1pbmcsIGRhdGEgc3RydWN0dXJlcywgYWxnb3JpdGhtcyBhbmQgZW5naW5lZXJpbmcgZnVuZGFtZW50YWxzLiBEb2N1bWVudHMgY291cnNld29yayBhbmQgdGVjaG5pY2FsIGxlYXJuaW5nIG9uIEdpdEh1YiBhcyBCeXRlSmF0aW4uCgpFRFVDQVRJT04KQmFjaGVsb3Igb2YgVGVjaG5vbG9neSAoQi5UZWNoKSwgQ29tcHV0ZXIgU2NpZW5jZSBhbmQgRW5naW5lZXJpbmcKR3VydSBHb2JpbmQgU2luZ2ggSW5kcmFwcmFzdGhhIFVuaXZlcnNpdHkgKEdHU0lQVSkgfCBDdXJyZW50bHkgc3R1ZHlpbmcKCkNVUlJFTlQgTEVBUk5JTkcgQU5EIENPVVJTRVdPUksKQyBwcm9ncmFtbWluZzogcHJvZ3JhbSBzdHJ1Y3R1cmUsIHZhcmlhYmxlcywgY29udHJvbCBmbG93LCBmdW5jdGlvbnMsIGFycmF5cyBhbmQgcG9pbnRlcnMuCkRhdGEgc3RydWN0dXJlcyBhbmQgYWxnb3JpdGhtczogZnVuZGFtZW50YWwgb3BlcmF0aW9ucywgc29ydGluZyBhbmQgcHJvYmxlbSBzb2x2aW5nLgpFbmdpbmVlcmluZyBmdW5kYW1lbnRhbHMsIHRlY2huaWNhbCBub3RlcyBhbmQgZG9jdW1lbnRhdGlvbi4KClRPT0xTCkdpdCwgR2l0SHViLCBOb3Rpb24sIEppcmEgYW5kIFRyZWxsby4KCkxFQVJOSU5HIFJPQURNQVAKQUksIG1hY2hpbmUgbGVhcm5pbmcgYW5kIGRhdGEgbW9kZWxzLgoK">Download
           TXT</a><button data-close="resume">Close ×</button></div>
     </div>
     <article class="resume-document">
@@ -2149,8 +2017,9 @@
         <h2>Jatin Rohilla</h2>
         <p>Computer Science and Engineering Undergraduate | C Programming</p>
         <p class="resume-links">GitHub: <a
-            href="https://github.com/ByteJatin">https://github.com/ByteJatin</a><br>Portfolio: <a
-            href="https://jatin-rohilla-portfolio.givingbison32.chatgpt.site/">https://jatin-rohilla-portfolio.givingbison32.chatgpt.site/</a><br>
+            href="https://github.com/ByteJatin">https://github.com/ByteJatin</a><br>LinkedIn: <a
+            href="https://www.linkedin.com/in/jatin-rohilla-2916bb34b/">linkedin.com/in/jatin-rohilla-2916bb34b</a><br>Portfolio: <a
+            href="https://bytejatin.vercel.app/">https://bytejatin.vercel.app/</a><br>
         </p>
       </header>
       <section>
@@ -2181,7 +2050,7 @@
     </article>
   </dialog>
   <script
-    type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Jatin Rohilla", "alternateName": "ByteJatin", "description": "Jatin Rohilla: Computer Science and Engineering undergraduate at GGSIPU. C programming, data structures, algorithms, coursework and GitHub learning.", "sameAs": ["https://github.com/ByteJatin"]}</script>
+    type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Jatin Rohilla", "alternateName": "ByteJatin", "description": "Jatin Rohilla: Computer Science and Engineering undergraduate at GGSIPU. C programming, data structures, algorithms, coursework and GitHub learning.", "sameAs": ["https://github.com/ByteJatin", "https://www.linkedin.com/in/jatin-rohilla-2916bb34b/"]}</script>
   <script>
     (() => {
       'use strict';
